@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Javascript Quiz </title>
+    <style>
+     .button{
+        border: thin solid;
+        border-color:black;
+        height:50px;
+        width:100px;
+        font-size: 20px;
+        font-family: sans-serif;
+        font-style: italic;
+        font-display: block;
+        }
+    </style>
+<script>
+     var id;
+            var min=1;
+            var sec=60;
+      function start_clock(){
+            id=setInterval("display()",1000);
+      }
+      function display(){
+            if(min==0 && sec <= 10){
+            document.getElementById("h1").style.color="red";
+            }
+          if(min==0 && sec==0){
+            alert("Times up");
+                var winObj=window.open("main form.html");
+            clearInterval(id);
+            }      
+        if(sec<10)
+            sec="0"+sec;
+        if(sec==60)
+            document.getElementById("h1").innerHTML="0"+min+": 00 ";
+          else
+            document.getElementById("h1").innerHTML="0"+min+":"+sec;
+        if(sec==0){
+             min--;
+             sec=60;
+        } 
+          sec--;
+      }
+function submitAnswers(){
+  var total = 20;
+  var score = 0;
+  // Get user input
+  var q1 = document.forms["quizForm"]["q1"].value;
+  var q2 = document.forms["quizForm"]["q2"].value;
+  var q3 = document.forms["quizForm"]["q3"].value;
+  var q4 = document.forms["quizForm"]["q4"].value;
+  var q5 = document.forms["quizForm"]["q5"].value;
+  var q6 = document.forms["quizForm"]["q6"].value;
+  var q7 = document.forms["quizForm"]["q7"].value;
+  var q8 = document.forms["quizForm"]["q8"].value;
+  var q9 = document.forms["quizForm"]["q9"].value;
+  var q10 = document.forms["quizForm"]["q10"].value;
+  var q11 = document.forms["quizForm"]["q11"].value;
+  var q12 = document.forms["quizForm"]["q12"].value;
+  var q13 = document.forms["quizForm"]["q13"].value;
+  var q14 = document.forms["quizForm"]["q14"].value;
+  var q15 = document.forms["quizForm"]["q15"].value;
+  var q16 = document.forms["quizForm"]["q16"].value;
+  var q17 = document.forms["quizForm"]["q17"].value;
+  var q18 = document.forms["quizForm"]["q18"].value;
+  var q19 = document.forms["quizForm"]["q19"].value;
+  var q20 = document.forms["quizForm"]["q20"].value;
+    var count=0;
+  // Validations
+  for(var i = 1; i <= total; i++){
+    if(eval('q'+ i) == null || eval('q'+ i) == ''){
+       count++;
+      i==i;
+    }
+  }
+    alert("You missed  "+" "+count+" "+" Questions out of "+total);
+    //Set Correct Answers
+  var answers = ["a", "a", "d", "b", "d","c","a","a","b","b","c","c","a","a","c","b","b","a","b","a"];
+  //Check the answers
+  for(var i = 1; i <= total; i++){
+    if(eval('q'+ i) == answers[i - 1]){
+      score++;
+    }
+  }
+  // Display results
+ var results = document.getElementById('results');
+ var c= confirm("You scored " + score + " out of " + total);
+ if(c==true)
+     {
+         var winObj=window.open("main form.html");
+         document.getElementsByTagNameName("input").checked=false;
+         clearInterval(id); 
+     }
+    else{
+         var winObj=window.open("main form.html");
+         return false;
+    }
+       
+    
+}
+    
+</script>
+</head>
+  <body style="background-color: pink;" onload="start_clock()">
+    <div id="container">
+    <h1 id="h1" style=" color: green;  text-align: right; font-size: 500%"></h1>
+    <h1  id="s" style="color: white;text-align: center;font-size:500%"> Simple Javascript Quiz</h1>
+    <section>
+        <div id="results"></div>
+        <form name="quizForm"  onsubmit="return submitAnswers()">
+          <h3> Question 1. In which HTML element do we put in JS code?</h3>
+          <input type="radio" name="q1" value="a" id="q1A">a. &lt;script&gt;</br>
+          <input type="radio" name="q1" value="b" id="q1B">b. &lt;js&gt;</br>
+          <input type="radio" name="q1" value="c" id="q1C">c. &lt;br&gt;</br>
+          <input type="radio" name="q1" value="d" id="q1D">d. &lt;link&gt;</br>
+
+          <h3> Question 2. Which HTML attibute is used to reference an external JS file?</h3>
+          <input type="radio" name="q2" value="a" id="q2A">a. src</br>
+          <input type="radio" name="q2" value="b" id="q2B">b. rel</br>
+          <input type="radio" name="q2" value="c" id="q2C">c. type</br>
+          <input type="radio" name="q2" value="d" id="q2D">d. href</br>
+
+          <h3> Question 3. How would you wtite "Hello" in an alert box?</h3>
+          <input type="radio" name="q3" value="a" id="q3A">a. msg("Hello")</br>
+          <input type="radio" name="q3" value="b" id="q3B">b. alertBox("Hello")</br>
+          <input type="radio" name="q3" value="c" id="q3C">c. document.wite("Hello")</br>
+          <input type="radio" name="q3" value="d" id="q3D">d. alert("Hello")</br>
+
+          <h3> Question 4. Javascript is directly related to Java?</h3>
+          <input type="radio" name="q4" value="a" id="q4A">a. True</br>
+          <input type="radio" name="q4" value="b" id="q4B">b. False</br>
+
+          <h3> Question 5. A variable in JS must start with which special character?</h3>
+          <input type="radio" name="q5" value="a" id="q5A">a. @</br>
+          <input type="radio" name="q5" value="b" id="q5B">b. $</br>
+          <input type="radio" name="q5" value="c" id="q5C">c. #</br>
+          <input type="radio" name="q5" value="d" id="q5D">d. No Special Character</br>
+          
+          <h3> Question 6. What would be  the result of 5+2+"7" ?</h3>
+          <input type="radio" name="q6" value="a" id="q6A">a. 14</br>
+          <input type="radio" name="q6" value="b" id="q6B">b. 58</br>
+          <input type="radio" name="q6" value="c" id="q6C">c. 77</br>
+          <input type="radio" name="q6" value="d" id="q6D">d. 527</br>
+           
+
+          <h3> Question 7. which method is used to find unicode of character?</h3>
+          <input type="radio" name="q7" value="a" id="q7A">a. charCodeAt()</br>
+          <input type="radio" name="q7" value="b" id="q7B">b. charAt()</br>
+          <input type="radio" name="q7" value="c" id="q7C">c. indexAt()</br>
+          <input type="radio" name="q7" value="d" id="q7D">d. indexOf()</br>
+
+          <h3> Question 8. Where is the correct place to insert a js?</h3>
+          <input type="radio" name="q8" value="a" id="q8A">a. Both &lt;head&gt; section and &lt;body&gt; section </br>
+          <input type="radio" name="q8" value="b" id="q8B">b. &lt;head&gt; section </br>
+          <input type="radio" name="q8" value="c" id="q8C">c. &lt;body&gt; section</br>
+         
+          <h3> Question 9. The external js file must contain the &lt;script&gt; tag?</h3>
+          <input type="radio" name="q9" value="a" id="q9A">a. True</br>
+          <input type="radio" name="q9" value="b" id="q9B">b. False</br>
+
+          <h3> Question 10. How do you create a function in js?</h3>
+          <input type="radio" name="q10" value="a" id="q10A">a. function=myFunction()</br>
+          <input type="radio" name="q10" value="b" id="q10B">b. function myFunction()</br>
+          <input type="radio" name="q10" value="c" id="q10C">c. function:myFunction()</br>
+          
+          <h3> Question 11. How do you call a function named "myfunction"?</h3>
+          <input type="radio" name="q11" value="a" id="q11A">a. call myfunction()</br>
+          <input type="radio" name="q11" value="b" id="q11B">b. call function myfunction()</br>
+          <input type="radio" name="q11" value="c" id="q11C">c. myfunction()</br>
+
+          <h3> Question 12. How to write IF statement in js?</h3>
+          <input type="radio" name="q12" value="a" id="q12A">a. if i=5 </br>
+          <input type="radio" name="q12" value="b" id="q12B">b. if i=5 then </br>
+          <input type="radio" name="q12" value="c" id="q12C">c. if (i==5)</br>
+
+          <h3> Question 13. How does WHILE loop start in js?</h3>
+          <input type="radio" name="q13" value="a" id="q13A">a. while(i&lt;=5)</br>
+          <input type="radio" name="q13" value="b" id="q13B">b. while(i=1) to 10</br>
+          <input type="radio" name="q13" value="c" id="q13C">c. while(i&lt;=5;i++)</br>
+          
+          <h3> Question 14. How can you add a comment in js?</h3>
+          <input type="radio" name="q14" value="a" id="q14A">a. //This is comment</br>
+          <input type="radio" name="q14" value="b" id="q14B">b. &lt;!--This is comment--&gt;</br>
+          <input type="radio" name="q14" value="c" id="q14C">c. 'This is comment</br>
+        
+           <h3> Question 15. How do you round the number 7.25, to the nearest integer in js?</h3>
+          <input type="radio" name="q15" value="a" id="q15A">a. Math.rnd(7.25) </br>
+          <input type="radio" name="q15" value="b" id="q15B">b. rnd(7.25) </br>
+          <input type="radio" name="q15" value="c" id="q15C">c. Math.round(7.25) </br>
+          <input type="radio" name="q15" value="d" id="q15D">d. round(7.25) </br>
+
+          <h3> Question 16. What is the correct js syntax for opening a new window called 'w2'?</h3>
+          <input type="radio" name="q16" value="a" id="q16A">a. w2=window.new("http://www.google.com");</br>
+          <input type="radio" name="q16" value="b" id="q16B"> b. w2=window.open("http://www.google.com");</br>
+          
+          <h3> Question 17. Javascript is same as java?</h3>
+          <input type="radio" name="q17" value="a" id="q17A">a. True</br>
+          <input type="radio" name="q17" value="b" id="q17B">b. False</br>
+          
+          <h3> Question 18. Which event occurs when user clicks on an HTML element?</h3>
+          <input type="radio" name="q18" value="a" id="q18A">a. onclick</br>
+          <input type="radio" name="q18" value="b" id="q18B">b. onmouseclick</br>
+          <input type="radio" name="q18" value="c" id="q18C">c. onchange</br>
+          <input type="radio" name="q18" value="d" id="q18D">d. onmouseover</br>
+
+          <h3> Question 19. How do you declare a js variable?</h3>
+          <input type="radio" name="q19" value="a" id="q19A">a. variable a;</br>
+          <input type="radio" name="q19" value="b" id="q19B">b. var a;</br>
+          <input type="radio" name="q19" value="c" id="q19C">c. v a;</br>
+
+          <h3> Question 20. Is js is case-sensitive?</h3>
+          <input type="radio" name="q20" value="a" id="q20A">a. Yes</br>
+          <input type="radio" name="q20" value="b" id="q20B">b. No</br>
+          <br><br>
+          <p align="center">
+          <input type="submit" value="Submit" class="button" style="background-color:chartreuse">
+          </p> 
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
